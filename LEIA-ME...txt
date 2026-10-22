@@ -1,0 +1,17 @@
+KYNEX FIT — PACOTE PWA INICIAL
+
+Conteúdo:
+- index.html: aplicativo atual
+- manifest.webmanifest: identidade e configuração de instalação
+- service-worker.js: cache básico para abrir a aplicação offline após a primeira visita
+- icons/: ícones para instalação
+
+IMPORTANTE:
+Para instalar como PWA, estes arquivos precisam estar publicados em um endereço HTTPS. Abrir o index.html diretamente no aparelho não ativa instalação PWA nem service worker.
+
+Publicação gratuita sugerida: GitHub Pages ou Cloudflare Pages. Depois de publicar, abra o endereço no navegador do celular.
+
+iPhone/iPad (Safari): Compartilhar > Adicionar à Tela de Início.
+Android (Chrome): menu ⋮ > Instalar app ou Adicionar à tela inicial.
+
+Este pacote ainda é um MVP demonstrativo: não possui contas, sincronização em nuvem, pagamentos nem integração com IA real. Os dados do protótipo ficam no armazenamento local do navegador e podem não ser compartilhados entre aparelhos.
