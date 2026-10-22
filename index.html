@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#e50914">
+<meta name="description" content="KYNEX FIT: organize seus treinos e acompanhe sua evolução.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="KYNEX FIT">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>KYNEX FIT</title>
+<style>
+:root{--red:#e50914;--red2:#ff3038;--bg:#090909;--panel:#151515;--panel2:#202020;--text:#f6f6f6;--muted:#b8b8b8;--line:#333}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{padding:22px 18px;background:linear-gradient(120deg,#080808,#241010);border-bottom:2px solid var(--red)}
+.wrap{max-width:1000px;margin:auto} .brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:12px;background:var(--red);display:grid;place-items:center;font-weight:900;font-size:21px;box-shadow:0 0 22px #e5091440}.brand h1{font-size:22px;margin:0;letter-spacing:.5px}.brand p{margin:2px 0 0;color:#c9c9c9;font-size:13px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.tab{border:1px solid #444;background:#171717;color:#eee;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:650}.tab.active,.primary{background:var(--red);border-color:var(--red);color:white}
+main{max-width:1000px;margin:24px auto;padding:0 16px 50px}.hero{padding:24px;border:1px solid #3a2020;border-radius:18px;background:radial-gradient(ellipse at top right,#421012 0,transparent 52%),var(--panel);margin-bottom:18px}.eyebrow{color:#ff555b;text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:800}.hero h2{font-size:clamp(26px,5vw,40px);line-height:1.1;margin:9px 0}.hero p{color:#d1d1d1;max-width:680px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:14px}.card h3{margin:0 0 12px}.stat{font-size:28px;font-weight:850}.muted{color:var(--muted)}label{display:block;font-size:14px;color:#ddd;margin:13px 0 6px}input,select{width:100%;padding:12px;background:#0d0d0d;border:1px solid #444;border-radius:9px;color:white;font:inherit}input:focus,select:focus{outline:2px solid #e5091480;border-color:var(--red)}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.checks{display:flex;gap:8px;flex-wrap:wrap}.check{display:flex;align-items:center;gap:8px;background:#101010;border:1px solid #383838;border-radius:9px;padding:9px 11px}.check input{width:auto;accent-color:var(--red)}button{font:inherit}.primary,.secondary,.danger{padding:12px 16px;border-radius:10px;cursor:pointer;font-weight:750;border:1px solid var(--red)}.primary:hover{background:var(--red2)}.secondary{background:#222;color:#fff;border-color:#555}.danger{background:#271010;color:#ff9b9f;border-color:#65282b}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.hidden{display:none!important}.workout-day{border:1px solid #3a3a3a;border-radius:12px;padding:14px;margin:12px 0;background:#101010}.workout-day h4{margin:0 0 8px;color:#ff555b}.exercise{display:grid;grid-template-columns:1fr auto;gap:8px;padding:9px 0;border-bottom:1px solid #292929}.exercise:last-child{border-bottom:0}.pill{font-size:12px;border:1px solid #5b282a;background:#2a1011;color:#ffb5b8;border-radius:99px;padding:4px 8px;white-space:nowrap}.note{font-size:13px;color:#bbb}.list{padding-left:20px}.list li{margin:8px 0}.footer{text-align:center;color:#777;font-size:12px;margin-top:30px}.empty{border:1px dashed #444;padding:22px;border-radius:12px;color:#aaa;text-align:center}
+@media(max-width:650px){.grid,.formgrid{grid-template-columns:1fr}.hero{padding:19px}.card{padding:16px}.tab{flex:1}.exercise{grid-template-columns:1fr}.pill{width:max-content}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <div class="brand"><div class="logo">K</div><div><h1>KYNEX <span style="color:#ff3038">FIT</span></h1><p>Inteligência que transforma. Treino que evolui.</p></div></div>
+ <nav>
+  <button class="tab active" data-tab="inicio">Início</button>
+  <button class="tab" data-tab="montar">Montar treino</button>
+  <button class="tab" data-tab="evolucao">Minha evolução</button>
+  <button class="tab" data-tab="alimentacao">Educação alimentar</button>
+  <button class="tab" data-tab="perfil">Preferências</button>
+ </nav>
+</div></header>
+<main>
+<section id="inicio" class="page">
+ <div class="hero"><div class="eyebrow">MVP • versão demonstrativa</div><h2>Treine com propósito.<br><span style="color:#ff3038">Evolua todos os dias.</span></h2><p>Uma experiência fitness para organizar seus treinos, acompanhar sua consistência e aprender hábitos que apoiam seus objetivos.</p><div class="actions"><button class="primary" onclick="showTab('montar')">Montar meu treino</button><button class="secondary" onclick="showTab('evolucao')">Ver minha evolução</button></div></div>
+ <div class="grid">
+  <div class="card"><div class="muted">Treinos registrados</div><div class="stat" id="homeCount">0</div><div class="note">Salvos neste dispositivo</div></div>
+  <div class="card"><div class="muted">Objetivo atual</div><div class="stat" style="font-size:21px" id="homeGoal">Ainda não definido</div><div class="note">Personalize no questionário</div></div>
+ </div>
+ <div class="card"><h3>Como funciona</h3><div class="grid"><div><strong>01 — Conte sobre você</strong><p class="muted">Objetivo, experiência, local e equipamentos.</p></div><div><strong>02 — Receba uma sugestão</strong><p class="muted">O protótipo monta uma rotina-base por regras.</p></div><div><strong>03 — Registre seus treinos</strong><p class="muted">Acompanhe sua frequência e histórico.</p></div><div><strong>04 — Evolua com segurança</strong><p class="muted">Adapte a rotina à sua realidade e orientação profissional.</p></div></div></div>
+</section>
+<section id="montar" class="page hidden">
+ <div class="card"><h2>Monte seu treino</h2><p class="muted">Responda às perguntas para gerar uma sugestão inicial.</p>
+ <form id="profileForm">
+ <div class="formgrid">
+  <div><label for="name">Como podemos chamar você?</label><input id="name" placeholder="Seu nome (opcional)" maxlength="50"></div>
+  <div><label for="goal">Objetivo principal</label><select id="goal"><option value="hipertrofia">Hipertrofia / ganhar massa muscular</option><option value="emagrecimento">Reduzir gordura corporal</option><option value="condicionamento">Melhorar condicionamento</option><option value="saude">Saúde e manter rotina ativa</option><option value="recomposicao">Manter peso e melhorar composição corporal</option></select></div>
+  <div><label for="level">Experiência</label><select id="level"><option value="iniciante">Iniciante</option><option value="intermediario">Intermediário</option><option value="avancado">Avançado</option></select></div>
+  <div><label for="place">Onde você treina?</label><select id="place"><option value="academia">Academia</option><option value="casa">Em casa</option><option value="ar livre">Ao ar livre</option></select></div>
+  <div><label for="days">Dias por semana</label><select id="days"><option value="2">2 dias</option><option value="3">3 dias</option><option value="4" selected>4 dias</option><option value="5">5 dias</option></select></div>
+  <div><label for="duration">Tempo disponível por treino</label><select id="duration"><option value="30">30 minutos</option><option value="45">45 minutos</option><option value="60" selected>60 minutos</option><option value="75">75 minutos</option></select></div>
+ </div>
+ <label>Equipamentos disponíveis (marque os que tiver)</label><div class="checks">
+ <label class="check"><input type="checkbox" name="equipment" value="halteres" checked> Halteres</label>
+ <label class="check"><input type="checkbox" name="equipment" value="elastico"> Elásticos</label>
+ <label class="check"><input type="checkbox" name="equipment" value="maquinas" checked> Máquinas/polias</label>
+ <label class="check"><input type="checkbox" name="equipment" value="barra"> Barra/anilhas</label>
+ <label class="check"><input type="checkbox" name="equipment" value="peso corporal" checked> Peso corporal</label>
+ </div>
+ <label for="limitations">Alguma limitação ou observação importante? (opcional)</label><input id="limitations" placeholder="Ex.: desconforto no joelho — não substitui avaliação profissional">
+ <div class="actions"><button class="primary" type="submit">Gerar sugestão de treino</button><button class="secondary" type="button" id="saveProfile">Salvar preferências</button></div>
+ </form></div>
+ <div id="workoutResult" class="card hidden"><h2 id="workoutTitle">Sua sugestão</h2><p id="workoutIntro" class="muted"></p><div id="workoutDays"></div><div class="actions"><button class="primary" id="logWorkout">Registrar treino concluído</button><button class="secondary" onclick="window.print()">Imprimir / salvar em PDF</button></div><p class="note">Sugestão educativa gerada por regras simples, não por IA clínica. Ajuste cargas e exercícios com profissional qualificado. Interrompa se sentir dor aguda, tontura ou mal-estar.</p></div>
+</section>
+<section id="evolucao" class="page hidden">
+ <div class="card"><h2>Minha evolução</h2><p class="muted">Registre a consistência e acompanhe o histórico salvo neste navegador.</p><div class="grid"><div><div class="muted">Total de sessões</div><div class="stat" id="totalSessions">0</div></div><div><div class="muted">Último registro</div><div id="lastSession" style="font-weight:750">Nenhum ainda</div></div></div></div>
+ <div class="card"><h3>Adicionar registro</h3><div class="formgrid"><div><label for="manualDate">Data</label><input type="date" id="manualDate"></div><div><label for="manualNote">Observação (opcional)</label><input id="manualNote" placeholder="Ex.: treino A, duração, sensação"></div></div><div class="actions"><button class="primary" id="manualLog">Registrar sessão</button><button class="danger" id="clearHistory">Apagar histórico</button></div></div>
+ <div class="card"><h3>Histórico</h3><div id="historyList" class="empty">Você ainda não registrou treinos.</div></div>
+</section>
+<section id="alimentacao" class="page hidden">
+ <div class="hero"><div class="eyebrow">Educação alimentar</div><h2>Pequenos hábitos, <span style="color:#ff3038">consistência real.</span></h2><p>Informações gerais para apoiar uma rotina equilibrada. Necessidades individuais variam.</p></div>
+ <div class="card"><h3>Hábitos que podem ajudar</h3><ul class="list"><li><strong>Variedade:</strong> priorize alimentos in natura ou minimamente processados, incluindo frutas, verduras, legumes, feijões e cereais.</li><li><strong>Regularidade:</strong> organize refeições de acordo com sua rotina e sinais de fome e saciedade.</li><li><strong>Hidratação:</strong> tenha água disponível ao longo do dia; a necessidade varia com clima, atividade e saúde.</li><li><strong>Proteína e recuperação:</strong> inclua fontes alimentares variadas e respeite o descanso entre sessões.</li><li><strong>Planejamento:</strong> preparar algumas refeições e lanches pode facilitar escolhas práticas.</li></ul><p class="note">Este conteúdo não é prescrição nutricional. Para um plano individual, procure nutricionista ou profissional de saúde habilitado, especialmente em caso de doença, gestação, alergias ou uso de medicamentos.</p></div>
+ <div class="card"><h3>Desafio da semana</h3><p>Escolha um hábito simples para praticar por 7 dias e acompanhe como se sente.</p><label for="habit">Meu hábito</label><input id="habit" placeholder="Ex.: incluir uma fruta no café da manhã"><div class="actions"><button class="primary" id="saveHabit">Salvar meu desafio</button></div><p id="habitSaved" class="muted"></p></div>
+</section>
+<section id="perfil" class="page hidden">
+ <div class="card"><h2>Preferências</h2><p class="muted">As informações ficam salvas localmente neste navegador neste protótipo.</p><div id="profileSummary" class="empty">Você ainda não salvou suas preferências.</div><div class="actions"><button class="primary" onclick="showTab('montar')">Editar preferências</button><button class="danger" id="resetData">Apagar dados locais</button></div></div>
+ <div class="card"><h3>Sobre esta versão</h3><p>Este é um protótipo demonstrativo do KYNEX FIT. Ele não tem conta de usuário, sincronização entre dispositivos, backend, pagamentos nem conexão com um modelo de IA real. Os dados são guardados no armazenamento local do navegador.</p></div>
+</section>
+<div class="footer">KYNEX FIT • Protótipo demonstrativo • Cuide-se e evolua no seu ritmo.</div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const get=(k,d)=>{try{return JSON.parse(localStorage.getItem('mfit_'+k))??d}catch(e){return d}};
+const set=(k,v)=>localStorage.setItem('mfit_'+k,JSON.stringify(v));
+let currentWorkout=null;
+function showTab(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('hidden',p.id!==id));document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));if(id==='evolucao')renderHistory();if(id==='perfil')renderProfile();window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+function equipment(){return [...document.querySelectorAll('input[name="equipment"]:checked')].map(x=>x.value)}
+function readProfile(){return {name:$('name').value.trim(),goal:$('goal').value,level:$('level').value,place:$('place').value,days:+$('days').value,duration:+$('duration').value,equipment:equipment(),limitations:$('limitations').value.trim()}}
+const routines={
+academia:{
+push:[['Supino máquina ou halteres','3 × 8–12'],['Remada sentada na polia','3 × 8–12'],['Agachamento goblet ou livre','3 × 8–12'],['Levantamento terra romeno com halteres','3 × 8–12'],['Elevação lateral','2 × 12–15'],['Prancha','3 × 20–40 s']],
+lower:[['Agachamento no Smith ou goblet','3 × 8–12'],['Mesa flexora','3 × 10–15'],['Hip thrust','3 × 8–12'],['Puxada na frente','3 × 8–12'],['Supino máquina','3 × 8–12'],['Panturrilha em pé','3 × 12–15']],
+full:[['Leg press ou agachamento goblet','3 × 8–12'],['Remada sentada','3 × 8–12'],['Supino máquina','3 × 8–12'],['Mesa flexora','2 × 10–15'],['Desenvolvimento com halteres','2 × 8–12'],['Dead bug','3 × 8–10 por lado']]},
+home:{
+push:[['Agachamento com peso corporal ou halteres','3 × 8–15'],['Flexão na parede, banco ou chão','3 × 6–12'],['Remada unilateral com halter ou mochila segura','3 × 8–12 por lado'],['Levantamento terra romeno com halteres/mochila','3 × 10–12'],['Elevação lateral com halteres ou garrafas','2 × 12–15'],['Prancha adaptada','3 × 20–30 s']],
+lower:[['Agachamento para cadeira','3 × 8–15'],['Ponte de glúteos','3 × 12–15'],['Afundo com apoio, se confortável','2 × 8–10 por lado'],['Remada com elástico ou mochila','3 × 10–12'],['Flexão inclinada','3 × 6–12'],['Elevação de panturrilha','3 × 12–20']],
+full:[['Sentar e levantar da cadeira','3 × 10–15'],['Flexão inclinada na parede/banco','3 × 6–12'],['Remada com elástico/mochila','3 × 10–12'],['Ponte de glúteos','3 × 12–15'],['Elevação lateral com garrafas','2 × 12–15'],['Bird dog','3 × 8 por lado']]},
+outdoor:{push:[['Agachamento para banco','3 × 10–15'],['Flexão na parede ou banco','3 × 6–12'],['Remada com elástico, se disponível','3 × 10–12'],['Passada curta com apoio, se confortável','2 × 8 por lado'],['Elevação de panturrilha','3 × 15'],['Prancha adaptada','3 × 20–30 s']],lower:[['Subida em degrau baixo e estável','3 × 8 por lado'],['Ponte de glúteos','3 × 12–15'],['Agachamento controlado','3 × 10–15'],['Flexão na parede','3 × 8–12'],['Caminhada em ritmo confortável','10–15 min'],['Bird dog','3 × 8 por lado']],full:[['Caminhada rápida conforme tolerância','8–15 min'],['Agachamento para banco','3 × 10–15'],['Flexão na parede','3 × 8–12'],['Passada com apoio','2 × 8 por lado'],['Elevação de panturrilha','3 × 15'],['Prancha adaptada','3 × 20–30 s']]}
+};
+function buildPlan(p){
+ let days=[],n=p.days;
+ let names=n===2?['Corpo inteiro A','Corpo inteiro B']:n===3?['Corpo inteiro A','Corpo inteiro B','Corpo inteiro C']:n===4?['Treino A — Corpo inteiro','Treino B — Corpo inteiro','Treino C — Corpo inteiro','Treino D — Corpo inteiro']:['Treino A — Corpo inteiro','Treino B — Corpo inteiro','Treino C — Corpo inteiro','Treino D — Corpo inteiro','Treino E — Corpo inteiro'];
+ for(let i=0;i<n;i++){let type=(n===2?'full':n===3?['push','lower','full'][i]:n===4?['push','lower','push','lower'][i]:['push','lower','full','push','lower'][i]);let arr=routines[p.place==='casa'?'home':p.place==='ar livre'?'outdoor':'academia'][type];if(p.level==='iniciante')arr=arr.slice(0,5);days.push({name:names[i],items:arr})}
+ return days
+}
+function goalLabel(g){return ({hipertrofia:'Hipertrofia / massa muscular',emagrecimento:'Redução de gordura corporal',condicionamento:'Condicionamento físico',saude:'Saúde e rotina ativa',recomposicao:'Recomposição corporal'})[g]||g}
+function renderPlan(p,plan){$('workoutTitle').textContent=(p.name?p.name+', sua':'Sua')+' sugestão de treino';$('workoutIntro').textContent=`Objetivo: ${goalLabel(p.goal)} • ${p.days} dias/semana • ${p.duration} min • ${p.place==='casa'?'Em casa':p.place==='ar livre'?'Ao ar livre':'Academia'}. Comece com aquecimento leve de 5–8 minutos e escolha uma carga que permita boa técnica.`;$('workoutDays').innerHTML=plan.map(d=>`<div class="workout-day"><h4>${d.name}</h4>${d.items.map(e=>`<div class="exercise"><span>${e[0]}</span><span class="pill">${e[1]}</span></div>`).join('')}</div>`).join('');$('workoutResult').classList.remove('hidden');currentWorkout={profile:p,plan};set('lastWorkout',currentWorkout)}
+$('profileForm').addEventListener('submit',e=>{e.preventDefault();const p=readProfile();const plan=buildPlan(p);set('profile',p);renderPlan(p,plan);$('homeGoal').textContent=goalLabel(p.goal);});
+$('saveProfile').addEventListener('click',()=>{const p=readProfile();set('profile',p);$('homeGoal').textContent=goalLabel(p.goal);renderProfile();alert('Preferências salvas neste navegador.');});
+$('logWorkout').addEventListener('click',()=>{const h=get('history',[]);h.unshift({date:new Date().toISOString().slice(0,10),note:'Treino sugerido concluído',goal:currentWorkout?.profile?.goal||get('profile',{}).goal||''});set('history',h);renderHistory();alert('Treino registrado!');});
+function renderHistory(){let h=get('history',[]);$('totalSessions').textContent=h.length;$('homeCount').textContent=h.length;$('lastSession').textContent=h.length?new Date(h[0].date+'T12:00:00').toLocaleDateString('pt-BR'):'Nenhum ainda';$('historyList').className=h.length?'':'empty';$('historyList').innerHTML=h.length?h.map((x,i)=>`<div class="exercise"><span><strong>${new Date(x.date+'T12:00:00').toLocaleDateString('pt-BR')}</strong><br><span class="muted">${escapeHtml(x.note||'Sessão de treino')}</span></span><button class="danger" onclick="deleteEntry(${i})">Excluir</button></div>`).join(''):'Você ainda não registrou treinos.';$('homeCount').textContent=h.length}
+function deleteEntry(i){let h=get('history',[]);h.splice(i,1);set('history',h);renderHistory()}
+$('manualDate').value=new Date().toISOString().slice(0,10);
+$('manualLog').addEventListener('click',()=>{let date=$('manualDate').value;if(!date){alert('Escolha uma data.');return}let h=get('history',[]);h.unshift({date,note:$('manualNote').value.trim()||'Sessão de treino'});set('history',h);$('manualNote').value='';renderHistory()});
+$('clearHistory').addEventListener('click',()=>{if(confirm('Apagar todos os registros de treino?')){set('history',[]);renderHistory()}});
+function renderProfile(){let p=get('profile',null);$('profileSummary').className=p?'':'empty';$('profileSummary').innerHTML=p?`<p><strong>Nome:</strong> ${escapeHtml(p.name||'Não informado')}</p><p><strong>Objetivo:</strong> ${escapeHtml(goalLabel(p.goal))}</p><p><strong>Nível:</strong> ${escapeHtml(p.level)}</p><p><strong>Local:</strong> ${escapeHtml(p.place)}</p><p><strong>Frequência:</strong> ${p.days} dias/semana</p><p><strong>Duração:</strong> ${p.duration} minutos</p><p><strong>Equipamentos:</strong> ${escapeHtml((p.equipment||[]).join(', ')||'Nenhum marcado')}</p>`:'Você ainda não salvou suas preferências.'}
+function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('saveHabit').addEventListener('click',()=>{const h=$('habit').value.trim();if(!h){alert('Escreva um hábito para salvar.');return}set('habit',h);$('habitSaved').textContent='Desafio salvo: '+h});
+$('resetData').addEventListener('click',()=>{if(confirm('Isso apagará as preferências, histórico e desafio salvos neste navegador. Continuar?')){Object.keys(localStorage).filter(k=>k.startsWith('mfit_')).forEach(k=>localStorage.removeItem(k));location.reload()}});
+(function init(){let p=get('profile',null);if(p){$('name').value=p.name||'';$('goal').value=p.goal;$('level').value=p.level;$('place').value=p.place;$('days').value=p.days;$('duration').value=p.duration;$('limitations').value=p.limitations||'';document.querySelectorAll('input[name="equipment"]').forEach(x=>x.checked=(p.equipment||[]).includes(x.value));$('homeGoal').textContent=goalLabel(p.goal)}let last=get('lastWorkout',null);if(last){currentWorkout=last;renderPlan(last.profile,last.plan)}let habit=get('habit','');if(habit){$('habit').value=habit;$('habitSaved').textContent='Desafio salvo: '+habit}renderHistory()})();
+</script>
+<script>
+if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('./service-worker.js').catch(err => console.warn('Service worker indisponível:', err)); }); }
+</script>
+</body>
+</html>
